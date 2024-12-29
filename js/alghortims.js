@@ -1,10 +1,15 @@
-export default function randomNumbers(a) {
+export function randomNumbersTo100(a) {
   const arr = [];
   for (let i = 0; i < a; i++) {
-    arr.push(Math.trunc(Math.random() * 100 - 200));
+    arr.push(Math.trunc(Math.random() * 200 - 100));
   }
   return arr;
-};
-let res = randomNumbers(12);
-console.log(res);
+}
 
+export function randomNumbersTo5(a) {
+  const arr = [];
+  for (let i = 0; i < a; i++) {
+    arr.push(Math.trunc(Math.random() * 5));
+  }
+  return arr;
+}

@@ -1,4 +1,5 @@
-import randomNumbers from "./alghortims.js"
+import { randomNumbersTo5, randomNumbersTo100 } from "./alghortims.js";
+
 // ============
 // 1-masala:
 /*Funksiya uchun xato tashlash
@@ -10,22 +11,22 @@ Shart:
         Xato bo‘lmasa, natija qaytarilsin.
 */
 
-const checkInputNumber = (num) => {
-    if(typeof num !== 'number' || num < 0){
-        throw new Error("Faktorialni hisoblash uchun musbat son kerak!")
-    }
-    let factorial = 1
+const checkInputNumberTo100 = (num) => {
+  if (typeof num !== "number" || num < 0) {
+    throw new Error("Faktorialni hisoblash uchun musbat son kerak!");
+  }
+  let factorial = 1;
 
-    for(let i = 1; i < num; i++){
-        factorial *= num
-    }
-    return factorial
-}
+  for (let i = 1; i < num; i++) {
+    factorial *= num;
+  }
+  return factorial;
+};
 
 try {
-    console.log(checkInputNumber(5))
+  console.log(checkInputNumber(5));
 } catch (error) {
-    console.error('Xato yuz berdi:', error.message)
+  console.error("Xato yuz berdi:", error.message);
 }
 
 // ============
@@ -43,27 +44,27 @@ Shart:
 
 */
 const calculateSredniyZnacheniya = (arr) => {
-    if(typeof arr !== 'object' || arr === undefined){
-        throw new Error("Massiv uzatilmadi")
+  if (typeof arr !== "object" || arr === undefined) {
+    throw new Error("Massiv uzatilmadi");
+  }
+  let sum = 0;
+  let country = 0;
+  arr.forEach((num) => {
+    if (isNaN(num)) {
+      throw new Error("Massivda faqat sonlar bo`lishi kerak!");
     }
-    let sum = 0
-    let country = 0
-    arr.forEach(num => {
-        if(isNaN(num)){
-            throw new Error('Massivda faqat sonlar bo`lishi kerak!')
-        }
-        sum += num
-        country++
-    });
-    return sum / country
-}
+    sum += num;
+    country++;
+  });
+  return sum / country;
+};
 
-const newArr = [1, 2, 3, 4]
+const newArr = [1, 2, 3, 4];
 
 try {
-    console.log(calculateSredniyZnacheniya(newArr))
+  console.log(calculateSredniyZnacheniya(newArr));
 } catch (error) {
-    console.error("Xato yuz berdi:", error.message)
+  console.error("Xato yuz berdi:", error.message);
 }
 
 // ============
@@ -81,174 +82,293 @@ try {
 // ============
 // 4-masala:
 //  Funksiya yozing, massivdagi barcha juft sonlarni topib, ularning yig‘indisini qaytaruvchi.
-const arr = randomNumbers(10)
-let sum = 0
-arr.forEach(arr => {
-    if(arr % 2 == 0){
-        sum += arr
-    }
-})
+const arr = randomNumbersTo100(10);
+let sum = 0;
+arr.forEach((arr) => {
+  if (arr % 2 == 0) {
+    sum += arr;
+  }
+});
 
-console.log(sum)
+console.log(sum);
 
 // ============
 // 5-masala:
 //Funksiya yozing, massivdan faqat toq sonlarni olib tashlaydigan va yangi massiv qaytaradigan.
-const arr1 = randomNumbers(10)
+const arr1 = randomNumbersTo100(10);
 
-let res = arr1.filter(arrNumbers => {
-    if(arrNumbers % 2 == 0){
-        return arrNumbers
-    }
-})
-console.log(res)
+let res = arr1.filter((arrNumbers) => {
+  if (arrNumbers % 2 == 0) {
+    return arrNumbers;
+  }
+});
+console.log(res);
 // ============
 // 6-masala:
 //Funksiya yozing, massiv ichida nechta unikal element borligini aniqlaydigan.
-const arr2 = randomNumbers(10)
+const arr2 = randomNumbersTo100(10);
 
-let res1 = arr2.filter(arrNumbers => {
-    
-})
+let res1 = arr2.filter((arrNumbers) => {});
 
 // ============
 // 7-masala:
 //Funksiya yozing, massivdagi eng katta va eng kichik sonlar o‘rtasidagi farqni topadigan.
-const arr3 = randomNumbers(10)
+const arr3 = randomNumbersTo100(10);
 
-let minIndex = arr3[0]
-let maxIndex = arr3[0]
+let minIndex = arr3[0];
+let maxIndex = arr3[0];
 
-arr3.forEach(arrIndex => {
-    if(arrIndex < minIndex){
-        minIndex = arrIndex
-    }else if(maxIndex < arrIndex){
-        maxIndex = arrIndex
-    }
-})
+arr3.forEach((arrIndex) => {
+  if (arrIndex < minIndex) {
+    minIndex = arrIndex;
+  } else if (maxIndex < arrIndex) {
+    maxIndex = arrIndex;
+  }
+});
 
-if(minIndex > 0){
-    console.log(maxIndex - minIndex)
-}else {
-    console.log(maxIndex + minIndex)
+if (minIndex > 0) {
+  console.log(maxIndex - minIndex);
+} else {
+  console.log(maxIndex + minIndex);
 }
 // ============
 // 8-masala:
 //Funksiya yozing, massivning barcha elementlarini o‘zgartirmasdan teskari tartibda qaytaradigan.
-const arr4 = randomNumbers(10)
+const arr4 = randomNumbersTo100(10);
+let res2 = [];
 
-let res2 = arr4.map(arrNumber => {
-    return arr4.pop().push(arrNumber)
-})
+arr4.forEach((arr) => {
+  res2.unshift(arr);
+});
+
+console.log(res2);
 
 // ============
 // 9-masala:
 //Funksiya yozing, massivdan berilgan qiymatning nechta marta uchrashganini topadigan.
+const arr5 = randomNumbersTo5(10);
 
+const findNumbers = (number) => {
+  let counter = 0;
+  arr5.forEach((arr) => {
+    if (number == arr) {
+      counter++;
+    }
+  });
+  return counter;
+};
 
 // ============
 // 10-masala:
 //Funksiya yozing, massivdagi barcha satr elementlarini uzunligi bo‘yicha o‘sish tartibida tartiblash uchun.
-
+const arr6 = ["apple", "banana", "kiwi", "orange", "pear"];
+function sorting(arr) {
+  return arr.sort((a, b) => a.length - b.length);
+}
 
 // ============
 // 11-masala:
 //Funksiya yozing, massivni ikki qismga bo‘lib, yangi massiv yaratadigan (birinchi yarmi va ikkinchi yarmi alohida massivlarda).
+const arr7 = randomNumbersTo100(10);
 
+const divideArray = (arr) => {
+  const firstArrLength = arr.length / 2;
 
+  const firstArr = arr.slice(0, firstArrLength);
+  const secondArr = arr.slice(firstArrLength, arr.length);
+  return {
+    firstArr,
+    secondArr,
+  };
+};
 // ============
 // 12-masala:
 //Funksiya yozing, massiv ichidan faqat musbat sonlarni yig‘ib yangi massiv yaratadigan.
+const arr8 = randomNumbersTo100(10);
 
-
+const filterArr = (arr) => {
+  const res = arr.filter((arr) => {
+    if (arr > 0) {
+      return arr;
+    }
+  });
+  return res;
+};
 // ============
 // 13-masala:
 //Funksiya yozing, massiv ichidagi sonlarning o‘rtacha qiymatini hisoblab beradigan.
+const arr9 = randomNumbersTo100(10);
 
-
+const ortachaQiymati = (arr) => {
+  let sum = 0;
+  arr.forEach((arr) => {
+    sum += arr;
+  });
+  return sum / arr.length;
+};
 // ============
 // 14-masala:
 //Funksiya yozing, massiv ichidagi barcha elementlarni ikki marta takrorlab qaytaradigan.
+const arr10 = randomNumbersTo100(10);
 
-
+const doublePrintArr = (arr) => {
+  let res = [];
+  for (let i = 0; i < arr.length; i++) {
+    res.push(arr[i]);
+    res.push(arr[i]);
+  }
+  return res;
+};
 // ============
 // 15-masala:
 //Funksiya yozing, massiv ichidagi satr elementlarning birinchi harfini katta harfga aylantiradigan.
+const arr11 = ["apple", "banana", "kiwi", "orange", "pear"];
 
+const toUperCaseFirstLetter = (arr) => {
+  const res = arr.map((arr) => {
+    return arr[0].toUpperCase() + arr.slice(1);
+  });
+  return res;
+};
 
+console.log(toUperCaseFirstLetter(arr11));
 // ============
 // 16-masala:
 //Funksiya yozing, massiv ichidagi raqamlar massivini saralash uchun, ammo tartibni belgilovchi flag qabul qilsin (o‘sish yoki kamayish tartibi).
+const arr12 = randomNumbersTo100(10);
 
+const filterArrNumbers = (arr, select) => {
+  let selected = select.toLowerCase();
+  const res = arr.sort((a, b) => {
+    if (selected === "osish") {
+      return b - a;
+    } else if (selected === "kamayish") {
+      return a - b;
+    } else {
+      throw new Error("Tartib notgri tanlangan");
+    }
+  });
+  return res;
+};
+
+try {
+  console.log(filterArrNumbers(arr12, "kamayih"));
+} catch (error) {
+  console.error("Hatolik:", error.message);
+}
 
 // ============
 // 17-masala:
 //Funksiya yozing, massivdan eng uzun va eng qisqa satrlarni topib, yangi massiv qaytaradigan.
+const arr13 = ["apple", "banana", "kiwi", "orange", "pear"];
 
+const returnTallAndSmallLetters = (arr) => {
+  let minLength = arr[0].length;
+  let maxLength = arr[0].length;
+  let tallLeter = arr[0];
+  let smallLeter = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (minLength > arr[i].length) {
+      minLength = arr[i].length;
+      smallLeter = arr[i];
+    }
+    if (maxLength < arr[i].length) {
+      maxLength = arr[i].length;
+      tallLeter = arr[i];
+    }
+  }
+
+  return {
+    tallLeter,
+    smallLeter,
+  };
+};
 // ============
 // 18-masala:
 //Funksiya yozing, massivdagi barcha elementlarni stringga aylantiruvchi (raqamlar uchun).
+const arr14 = randomNumbersTo100(10);
 
-
+const numbersInArrToString = (arr) => {
+  let res = [];
+  arr.forEach((arr) => {
+    res.push(arr.toString());
+  });
+  return res;
+};
 // ============
 // 19-masala:
-//
+//Funksiya yozing, satr ichida nechta unli harf borligini qaytaradigan.
+let str = "Salom, dunyo!";
 
+const unliHariflarSoni = (str) => {
+  const unliHariflar = ["i", "e", "a", "o", "u", "o"];
+  let counter = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (unliHariflar.includes(str[i].toLowerCase())) {
+      counter++;
+    } else {
+    }
+  }
+  return counter;
+};
 // ============
 // 20-masala:
-//
-
+//Funksiya yozing, berilgan satrdan barcha probellarni olib tashlaydigan va yangi satr qaytaradigan.
+const deleteWhiteSpace = (str) => {
+  let res = str.replaceAll(' ', '')
+  return res
+}
 // ============
 // 21-masala:
-//
+//Funksiya yozing, satr ichidagi barcha so‘zlarni o‘zaro joyini almashtiradigan.
 
 // ============
 // 22-masala:
-//
+//Funksiya yozing, satr ichidagi so‘zlarni uzunligi bo‘yicha tartiblaydigan.
 
 // ============
 // 23-masala:
-//
+//Funksiya yozing, satr ichida ma’lum bir so‘z necha marta takrorlanganini aniqlaydigan.
 
 // ============
 // 24-masala:
-//
+//Funksiya yozing, satr ichidagi barcha kichik harflarni katta harfga aylantiradigan va aksincha.
 
 // ============
 // 25-masala:
-//
+//Funksiya yozing, satrdagi barcha raqamlarni yig‘indisini hisoblaydigan.
 
 // ============
 // 26-masala:
-//
+//Funksiya yozing, satrdan faqat unikal harflarni qoldiradigan va takroriylarini olib tashlaydigan.
 
 // ============
 // 27-masala:
-//
+//Funksiya yozing, satrdan barcha belgilarni o‘z o‘rniga teskari tartibda chiqaradigan.
 
 // ============
 // 28-masala:
-//
+//Funksiya yozing, satr ichidagi barcha so‘zlarning birinchi harfini katta harfga o‘zgartiradigan.
 
 // ============
 // 29-masala:
-//
+//Funksiya yozing, satrdan barcha so‘zlarni massivga ajratadigan va so‘zlarni alfavit tartibida qaytaradigan.
 
 // ============
 // 30-masala:
-//
+//Funksiya yozing, massiv ichidagi barcha so‘zlarni birlashtirib, yagona satr yaratadigan.
 
 // ============
 // 31-masala:
-//
+//Funksiya yozing, massiv ichidagi satrlardan uzunligi bo‘yicha eng katta bo‘lganini qaytaradigan.
 
 // ============
 // 32-masala:
-//
+//Funksiya yozing, massiv ichidagi har bir elementni teskari qilib, yangi massiv qaytaradigan.
 
 // ============
 // 33-masala:
-//
+//Funksiya yozing, satr ichidagi barcha takrorlanmagan so‘zlarni ajratib, massivga joylashtiradigan.
 
 // ============
 // 34-masala:
