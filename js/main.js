@@ -114,12 +114,32 @@ let res1 = arr2.filter(arrNumbers => {
 // ============
 // 7-masala:
 //Funksiya yozing, massivdagi eng katta va eng kichik sonlar o‘rtasidagi farqni topadigan.
+const arr3 = randomNumbers(10)
 
+let minIndex = arr3[0]
+let maxIndex = arr3[0]
 
+arr3.forEach(arrIndex => {
+    if(arrIndex < minIndex){
+        minIndex = arrIndex
+    }else if(maxIndex < arrIndex){
+        maxIndex = arrIndex
+    }
+})
+
+if(minIndex > 0){
+    console.log(maxIndex - minIndex)
+}else {
+    console.log(maxIndex + minIndex)
+}
 // ============
 // 8-masala:
 //Funksiya yozing, massivning barcha elementlarini o‘zgartirmasdan teskari tartibda qaytaradigan.
+const arr4 = randomNumbers(10)
 
+let res2 = arr4.map(arrNumber => {
+    return arr4.pop().push(arrNumber)
+})
 
 // ============
 // 9-masala:

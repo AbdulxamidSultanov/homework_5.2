@@ -5,12 +5,11 @@ const randomNumbers = (a) => {
   }
   return arr;
 };
-const arr1 = randomNumbers(100)
-console.log(arr1)
-let res = arr1.filter(arrNumbers => {
-    if(arrNumbers % 2 == 0){
-        return arrNumbers
-    }
+const arr4 = randomNumbers(10)
+console.log(arr4)
+arr4.forEach(arr => {
+    const res = arr4.pop()
+    let res2 = res.push(arr)
 })
 
 console.log(res)
