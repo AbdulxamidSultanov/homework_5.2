@@ -241,9 +241,9 @@ const filterArrNumbers = (arr, select) => {
   let selected = select.toLowerCase();
   const res = arr.sort((a, b) => {
     if (selected === "osish") {
-      return b - a;
-    } else if (selected === "kamayish") {
       return a - b;
+    } else if (selected === "kamayish") {
+      return b - a;
     } else {
       throw new Error("Tartib notgri tanlangan");
     }
@@ -315,53 +315,128 @@ const unliHariflarSoni = (str) => {
 // 20-masala:
 //Funksiya yozing, berilgan satrdan barcha probellarni olib tashlaydigan va yangi satr qaytaradigan.
 const deleteWhiteSpace = (str) => {
-  let res = str.replaceAll(' ', '')
-  return res
-}
+  let res = str.replaceAll(" ", "");
+  return res;
+};
 // ============
 // 21-masala:
 //Funksiya yozing, satr ichidagi barcha so‘zlarni o‘zaro joyini almashtiradigan.
-
+const replaceStr = (str) => {
+  const splitStr = str.split(" ");
+  let res;
+  for (let i = 0; i < splitStr.length; i += 2) {
+    res = str.replaceAll(splitStr[i], splitStr[i + 1]);
+    if ((i = splitStr.length)) {
+      res = str.replaceAll(
+        splitStr[splitStr.length - 1],
+        splitStr[splitStr.length]
+      );
+    }
+  }
+  return res;
+};
 // ============
 // 22-masala:
 //Funksiya yozing, satr ichidagi so‘zlarni uzunligi bo‘yicha tartiblaydigan.
-
+const arrangeStrFromLength = (str) => {
+  let tallStr = str.split(" ");
+  let tallStrIndex = tallStr[0];
+  const res = tallStr.sort((a, b) => {
+    return b.length - a.length;
+  });
+  return res.join(" ");
+};
 // ============
 // 23-masala:
 //Funksiya yozing, satr ichida ma’lum bir so‘z necha marta takrorlanganini aniqlaydigan.
-
+const countRepetLetter = (str, findElement) => {
+  let clearLetter = str
+    .toLowerCase()
+    .replace(/\W|_/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  let strToObject = clearLetter.split(" ");
+  let counter = 0;
+  strToObject.forEach((element) => {
+    if (element === findElement) {
+      counter++;
+    }
+  });
+  return counter;
+};
 // ============
 // 24-masala:
 //Funksiya yozing, satr ichidagi barcha kichik harflarni katta harfga aylantiradigan va aksincha.
-
+const replaceLetterLowerAndUpper = (str) => {
+  const replaced = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i].toLowerCase()) {
+      replaced.push(str[i].toUpperCase());
+    } else {
+      replaced.push(str[i].toLowerCase());
+    }
+  }
+  return replaced.join("");
+};
 // ============
 // 25-masala:
 //Funksiya yozing, satrdagi barcha raqamlarni yig‘indisini hisoblaydigan.
-
+const calculateStrNumbers = (str) => {
+  let strToObject = str.split(" ");
+  let sum = 0;
+  strToObject.forEach((number) => {
+    let strToNumber = parseInt(number);
+    sum += strToNumber;
+  });
+  return sum;
+};
 // ============
 // 26-masala:
 //Funksiya yozing, satrdan faqat unikal harflarni qoldiradigan va takroriylarini olib tashlaydigan.
-
+const deleteRepetLetters = (str) => {
+  const strToArr = str.split("");
+  const res = strToArr.map((arr) => {
+    for (let i = 0; i < strToArr.length; i++) {
+      if (arr === strToArr[i]) {
+        delete strToArr[i];
+      }
+    }
+    return arr;
+  });
+  return res.join("");
+};
 // ============
 // 27-masala:
 //Funksiya yozing, satrdan barcha belgilarni o‘z o‘rniga teskari tartibda chiqaradigan.
-
+const reverseStr = (str) => {
+  return str.split("").reverse().join(" ");
+};
 // ============
 // 28-masala:
 //Funksiya yozing, satr ichidagi barcha so‘zlarning birinchi harfini katta harfga o‘zgartiradigan.
-
+const upperCaseFirstLetter = (str) => {
+  const strToArr = str.split(" ");
+  const res = strToArr.map((arr) => {
+    return arr.charAt(0).toUpperCase() + arr.slice(1);
+  });
+  return res.join(" ");
+};
 // ============
 // 29-masala:
 //Funksiya yozing, satrdan barcha so‘zlarni massivga ajratadigan va so‘zlarni alfavit tartibida qaytaradigan.
-
+const sortWordsAlphabetically = (str) => {
+  return str.split(" ").sort((a, b) => a.localeCompare(b));
+};
 // ============
 // 30-masala:
 //Funksiya yozing, massiv ichidagi barcha so‘zlarni birlashtirib, yagona satr yaratadigan.
-
+const removeWhiteSpaceInArr = (arr) => {
+  return arr.join("");
+};
 // ============
 // 31-masala:
 //Funksiya yozing, massiv ichidagi satrlardan uzunligi bo‘yicha eng katta bo‘lganini qaytaradigan.
-
+const
 // ============
 // 32-masala:
 //Funksiya yozing, massiv ichidagi har bir elementni teskari qilib, yangi massiv qaytaradigan.

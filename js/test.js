@@ -1,8 +1,9 @@
 import { randomNumbersTo5, randomNumbersTo100 } from "./alghortims.js";
-// i, e, a, o, u, o
-let str = "           Salom, dunyo!"
+const arr = "salom dunyo qalselar"
+const sortWordsAlphabetically = (str) => {
+  return str
+    .split(" ") 
+    .sort((a, b) => a.localeCompare(b)); 
+};
 
-let res = str.replaceAll(' ', '')
-
-console.log(str)
-console.log(res)
+console.log(sortWordsAlphabetically(arr));
