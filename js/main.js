@@ -436,15 +436,37 @@ const removeWhiteSpaceInArr = (arr) => {
 // ============
 // 31-masala:
 //Funksiya yozing, massiv ichidagi satrlardan uzunligi bo‘yicha eng katta bo‘lganini qaytaradigan.
-const
+const returnMaxLength = (arr) => {
+  let maxLength = arr[0].length;
+  let maxElement = arr[0];
+  arr.forEach((element) => {
+    if (maxLength < element.length) {
+      maxElement = element;
+    }
+  });
+  return maxElement;
+};
 // ============
 // 32-masala:
 //Funksiya yozing, massiv ichidagi har bir elementni teskari qilib, yangi massiv qaytaradigan.
-
+const reverseAllElemnInArr = (arr) => {
+  return arr.map((arr) => arr.split("").reverse().join(""));
+};
 // ============
 // 33-masala:
 //Funksiya yozing, satr ichidagi barcha takrorlanmagan so‘zlarni ajratib, massivga joylashtiradigan.
+const uniqueLetter = (str) => {
+  const words = str.split(' '); 
+  const wordCount = {};
 
+
+  words.forEach(word => {
+    wordCount[word] = (wordCount[word] || 0) + 1;
+  });
+
+
+  return words.filter(word => wordCount[word] === 1);
+};
 // ============
 // 34-masala:
 //
